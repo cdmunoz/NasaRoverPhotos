@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Nasa Rover Photos</string>
+
+    <string name="hello_info_fragment">Hello Info fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_info">Info</string>
+</resources>
