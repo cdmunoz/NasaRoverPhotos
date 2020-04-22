@@ -2,26 +2,34 @@ package co.cdmunoz.nasaroverphotos
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import co.cdmunoz.nasaroverphotos.databinding.ActivityMainBinding
+import co.cdmunoz.nasaroverphotos.utils.extensions.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
 
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private val TAG = MainActivity::class.java.name
+    }
+
     private var currentNavController: LiveData<NavController>? = null
     private lateinit var binding: ActivityMainBinding
+    private lateinit var toolBar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*setContentView(R.layout.activity_main)*/
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        toolBar = binding.toolbar
+        setSupportActionBar(toolBar)
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         } // Else, need to wait for onRestoreInstanceState
+        setContentView(binding.root)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
@@ -40,12 +48,10 @@ class MainActivity : AppCompatActivity() {
         val navGraphIds = listOf(R.navigation.nav_graph_home, R.navigation.nav_graph_info)
 
         // Setup the bottom navigation view with a list of navigation graphs
-        val controller = bottomNavigationView.setupWithNavController(
-            navGraphIds = navGraphIds,
+        val controller = bottomNavigationView.setupWithNavController(navGraphIds = navGraphIds,
             fragmentManager = supportFragmentManager,
             containerId = R.id.nav_host_fragment,
-            intent = intent
-        )
+            intent = intent)
 
         // Whenever the selected controller changes, setup the action bar.
         controller.observe(this, Observer { navController ->

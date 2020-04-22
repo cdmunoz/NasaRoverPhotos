@@ -1,11 +1,53 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+    </style>
+
+    <style name="AppTheme.SplashLoad" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/sf_pro_display_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="colorOnPrimary">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Home.Row.Text" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="AppTheme.PhotoDetails" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="AppTheme.PhotoDetails.Title" parent="AppTheme.PhotoDetails">
+        <item name="fontFamily">@font/sf_pro_display_semi_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AppTheme.PhotoDetails.Label" parent="AppTheme.PhotoDetails">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.GeneralInfo" parent="AppTheme">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.GeneralInfo.Title" parent="AppTheme.GeneralInfo">
+        <item name="fontFamily">@font/sf_pro_display_semi_bold</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
 </resources>
