@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.cdmunoz.nasaroverphotos.MainActivity
 import co.cdmunoz.nasaroverphotos.R
@@ -56,9 +56,9 @@ class HomeFragment : Fragment() {
 
     private fun initViewModels() {
         if (null == photosViewModel) {
-            photosViewModel = ViewModelProviders.of(this,
-                ViewModelFactory(RetrofitService.createService(ApiService::class.java)))
-                .get(PhotosViewModel::class.java)
+            photosViewModel = ViewModelProvider(this@HomeFragment,
+                ViewModelFactory(RetrofitService.createService(ApiService::class.java))).get(
+                PhotosViewModel::class.java)
             photosViewModel?.loadData()
         }
     }
