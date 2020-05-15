@@ -4,20 +4,129 @@
     <data>
 
         <variable
-            name="camera"
-            type="String" />
+            name="photoBinding"
+            type="co.cdmunoz.nasaroverphotos.data.model.Photo" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/photo_details_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".PhotoDetailsFragment">
+        android:layout_height="match_parent">
 
-        <TextView
+        <ImageView
+            android:id="@+id/photo_details_image"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:fitsSystemWindows="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/photo_details_image_zoom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{camera}" />
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+        <ProgressBar
+            android:id="@+id/photo_details_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@id/photo_details_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/photo_details_image" />
+
+        <View
+            android:id="@+id/photo_details_card"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_rect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photo_details_image"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/photo_details_camera_full_name"
+            style="@style/AppTheme.PhotoDetails.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{photoBinding.camera.fullName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/photo_details_card" />
+
+        <TextView
+            android:id="@+id/photo_details_camera_name"
+            style="@style/AppTheme.PhotoDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_camera_rover"
+            android:drawablePadding="8dp"
+            android:padding="4dp"
+            android:text="@{photoBinding.camera.nameFullName}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photo_details_camera_full_name" />
+
+        <TextView
+            android:id="@+id/photo_details_rover_name_lbl"
+            style="@style/AppTheme.PhotoDetails.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_mars_rover"
+            android:drawablePadding="8dp"
+            android:padding="4dp"
+            android:text="Rover: "
+            app:layout_constraintStart_toStartOf="@+id/photo_details_camera_name"
+            app:layout_constraintTop_toBottomOf="@+id/photo_details_camera_name" />
+
+        <TextView
+            android:id="@+id/photo_details_rover_name"
+            style="@style/AppTheme.PhotoDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:drawablePadding="4dp"
+            android:padding="4dp"
+            android:text="@{photoBinding.rover.name}"
+            app:layout_constraintStart_toEndOf="@+id/photo_details_rover_name_lbl"
+            app:layout_constraintTop_toTopOf="@+id/photo_details_rover_name_lbl" />
+
+        <TextView
+            android:id="@+id/photo_details_photo_date_lbl"
+            style="@style/AppTheme.PhotoDetails.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawablePadding="8dp"
+            android:padding="4dp"
+            android:text="Earth's Date: "
+            app:layout_constraintStart_toStartOf="@+id/photo_details_camera_name"
+            app:layout_constraintTop_toBottomOf="@+id/photo_details_rover_name" />
+
+        <TextView
+            android:id="@+id/photo_details_photo_date"
+            style="@style/AppTheme.PhotoDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:padding="4dp"
+            android:text="@{photoBinding.earthDate}"
+            app:layout_constraintStart_toEndOf="@+id/photo_details_photo_date_lbl"
+            app:layout_constraintTop_toTopOf="@+id/photo_details_photo_date_lbl" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

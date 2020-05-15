@@ -5,7 +5,8 @@
     <color name="colorAccent">#8BC34A</color>
     <color name="colorPrimaryLight">#B2EBF2</color>
     <color name="colorTextIcons">#FFFFFF</color>
-    <color name="colorPrimaryText">#212121</color>
+    <color name="colorPrimaryText">#414141</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
+    <color name="colorNavBar">#800097A7</color>
 </resources>

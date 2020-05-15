@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">Nasa Rover Photos</string>
 
-    <string name="hello_info_fragment">Hello Info fragment</string>
+    <string name="info_fragment_title">NASA Mars Rover Photos REST API v1.0</string>
+    <string name="info_fragment_api_text">All contents of this app are being displayed using NASA Mars Rover Photos REST API v1.0.\nThis API
+        allows you to collect image data gathered by NASA\'s Curiosity, Opportunity, and Spirit rovers on Mars.\n\nEach rover has its own set
+        of photos stored in the database, that are capable of being queried separately. Along with querying by date, results can be filtered
+        by the camera.\n\nResponses are limited to 25 photos per call for unregistered key. NASA open data supports NASA\'s scientists
+        and engineers with information technology such as infusion, procurement, and future IT workforce development.</string>
+    <string name="title_home_fragment">Mars Rover Photos</string>
     <string name="title_home">Home</string>
-    <string name="title_info">Info</string>
+    <string name="title_info">General Info</string>
+    <string name="title_details_fragment">Photo\'s Detailed Info</string>
+    <string name="no_data_msg">No data available</string>
+    <string name="nasa_mars_rover_photos_lbl">NASA MARS ROVER PHOTOS</string>
 </resources>

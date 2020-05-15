@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/home_dest"
-        android:name="co.cdmunoz.nasaroverphotos.HomeFragment"
-        android:label="Home"
+        android:name="co.cdmunoz.nasaroverphotos.ui.home.HomeFragment"
+        android:label="@string/title_home_fragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_details"
@@ -21,8 +21,8 @@
 
     <fragment
         android:id="@+id/details_dest"
-        android:name="co.cdmunoz.nasaroverphotos.PhotoDetailsFragment"
-        android:label="Photo Details"
+        android:name="co.cdmunoz.nasaroverphotos.ui.details.PhotoDetailsFragment"
+        android:label="@string/title_details_fragment"
         tools:layout="@layout/fragment_photo_details" />
 
 </navigation>

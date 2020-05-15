@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/generalInfo_dest"
-        android:name="co.cdmunoz.nasaroverphotos.GeneralInfoFragment"
-        android:label="General Info"
+        android:name="co.cdmunoz.nasaroverphotos.ui.generalinfo.GeneralInfoFragment"
+        android:label="@string/title_info"
         tools:layout="@layout/fragment_general_info" />
 
 </navigation>

@@ -5,16 +5,16 @@
     <data>
 
         <variable
-            name="camera"
-            type="String" />
+            name="photoBinding"
+            type="co.cdmunoz.nasaroverphotos.data.model.Photo" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:elevation="2dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,34 +22,53 @@
 
             <TextView
                 android:id="@+id/row_photo_rover_name"
+                style="@style/AppTheme.Home.Row.Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Curiosity"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="10dp"
+                android:drawableStart="@drawable/ic_mars_rover"
+                android:drawablePadding="8dp"
+                android:text="@{photoBinding.rover.name}"
+                app:layout_constraintBottom_toTopOf="@+id/row_photo_rover_camera"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintWidth_percent="0.3" />
 
             <TextView
                 android:id="@+id/row_photo_rover_camera"
+                style="@style/AppTheme.Home.Row.Text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@{camera}"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="6dp"
+                android:drawableStart="@drawable/ic_camera_rover"
+                android:drawablePadding="8dp"
+                android:text="@{photoBinding.camera.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/row_photo_rover_name"
                 app:layout_constraintTop_toBottomOf="@+id/row_photo_rover_name"
                 app:layout_constraintWidth_percent="0.3" />
 
+
             <ImageView
+                android:id="@+id/row_photo_rover_img"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:image_url="@{photoBinding.imgSrc}"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher_round"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.7" />
+
+            <ProgressBar
+                android:id="@+id/row_photo_rover_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/row_photo_rover_img"
+                app:layout_constraintStart_toStartOf="@+id/row_photo_rover_img"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
