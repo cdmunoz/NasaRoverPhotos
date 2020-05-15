@@ -6,4 +6,4 @@ Almost all of the work will have some written articles trying to explain everyth
 
 The current application would be something like this:
 
-![](https://miro.medium.com/max/536/1*RZSxKlVYi7Si9v6muwW4Tw.gif)
+![](imgs/nasa_rover_overview.gif)
