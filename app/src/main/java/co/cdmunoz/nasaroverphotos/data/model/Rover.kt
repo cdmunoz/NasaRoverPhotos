@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Rover(@SerializedName("roverCameras") val roverCameras: List<RoverCamera> = arrayListOf(),
+data class Rover(@SerializedName("cameras") val roverCameras: List<RoverCamera> = arrayListOf(),
     @SerializedName("id") val id: Int,
     @SerializedName("landing_date") val landingDate: String,
     @SerializedName("launch_date") val launchDate: String,

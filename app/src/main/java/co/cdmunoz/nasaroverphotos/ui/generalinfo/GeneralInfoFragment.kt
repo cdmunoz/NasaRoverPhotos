@@ -37,8 +37,8 @@ class GeneralInfoFragment : Fragment() {
             binding.generalInfoProgress)
     }
 
-    override fun onPause() {
+    override fun onDestroy() {
         (activity as MainActivity).supportActionBar?.show()
-        super.onPause()
+        super.onDestroy()
     }
 }

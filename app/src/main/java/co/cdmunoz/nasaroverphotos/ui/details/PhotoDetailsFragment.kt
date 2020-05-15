@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import co.cdmunoz.nasaroverphotos.MainActivity
 import co.cdmunoz.nasaroverphotos.data.model.Photo
 import co.cdmunoz.nasaroverphotos.databinding.FragmentPhotoDetailsBinding
 import co.cdmunoz.nasaroverphotos.databinding.FragmentPhotoDetailsBindingImpl
@@ -58,5 +59,10 @@ class PhotoDetailsFragment : Fragment() {
                     shortAnimationDuration)
             }
         }
+    }
+
+    override fun onResume() {
+        (activity as MainActivity).supportActionBar?.show()
+        super.onResume()
     }
 }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.cdmunoz.nasaroverphotos.MainActivity
 import co.cdmunoz.nasaroverphotos.R
 import co.cdmunoz.nasaroverphotos.data.api.ApiService
 import co.cdmunoz.nasaroverphotos.data.api.RetrofitService
@@ -120,6 +121,11 @@ class HomeFragment : Fragment() {
         Snackbar.make(bottomNavView, R.string.no_data_msg, Snackbar.LENGTH_SHORT).apply {
             anchorView = bottomNavView
         }.show()
+    }
+
+    override fun onResume() {
+        (activity as MainActivity).supportActionBar?.show()
+        super.onResume()
     }
 
     override fun onDestroyView() {
