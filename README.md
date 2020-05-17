@@ -4,6 +4,4 @@ This is a project used to implement and explain several topics in Android Develo
 
 Almost all of the work will have some written articles trying to explain everything.
 
-The current application would be something like this:
-
-![](imgs/nasa_rover_overview.gif)
+For this branch, the article can be found here, where all the logic to adde Espresso UI tests using Idling resources is explained.
