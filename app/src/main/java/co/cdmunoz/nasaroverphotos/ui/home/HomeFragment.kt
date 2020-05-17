@@ -19,6 +19,7 @@ import co.cdmunoz.nasaroverphotos.databinding.FragmentHomeBinding
 import co.cdmunoz.nasaroverphotos.databinding.FragmentHomeBindingImpl
 import co.cdmunoz.nasaroverphotos.utils.Result
 import co.cdmunoz.nasaroverphotos.utils.list.InfiniteScrollListener
+import co.cdmunoz.nasaroverphotos.utils.test.EspressoIdlingResource
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 
@@ -59,6 +60,7 @@ class HomeFragment : Fragment() {
             photosViewModel = ViewModelProvider(this@HomeFragment,
                 ViewModelFactory(RetrofitService.createService(ApiService::class.java))).get(
                 PhotosViewModel::class.java)
+            EspressoIdlingResource.increment()
             photosViewModel?.loadData()
         }
     }
@@ -68,6 +70,7 @@ class HomeFragment : Fragment() {
             when (result) {
                 is Result.Success -> {
                     renderList(result.data)
+                    EspressoIdlingResource.decrement()
                     binding.homePhotosProgressContainer.visibility = View.GONE
                     binding.homePhotosList.visibility = View.VISIBLE
                 }
