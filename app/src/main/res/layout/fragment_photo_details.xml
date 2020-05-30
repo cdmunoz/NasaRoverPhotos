@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,7 +21,8 @@
             android:fitsSystemWindows="true"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/photo_details_image_zoom"
@@ -30,7 +31,8 @@
             android:scaleType="centerCrop"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <ProgressBar
             android:id="@+id/photo_details_progress"
@@ -88,7 +90,7 @@
             android:drawableStart="@drawable/ic_mars_rover"
             android:drawablePadding="8dp"
             android:padding="4dp"
-            android:text="Rover: "
+            android:text="@string/rover_label_text"
             app:layout_constraintStart_toStartOf="@+id/photo_details_camera_name"
             app:layout_constraintTop_toBottomOf="@+id/photo_details_camera_name" />
 
@@ -113,7 +115,7 @@
             android:drawableStart="@drawable/ic_calendar"
             android:drawablePadding="8dp"
             android:padding="4dp"
-            android:text="Earth's Date: "
+            android:text="@string/earth_date_label_text"
             app:layout_constraintStart_toStartOf="@+id/photo_details_camera_name"
             app:layout_constraintTop_toBottomOf="@+id/photo_details_rover_name" />
 

@@ -18,11 +18,12 @@
         app:layout_constraintVertical_bias="0.45"
         tools:ignore="ContentDescription" />
 
-    <TextView android:id="@+id/splash_mars_rover_name"
+    <TextView
+        android:id="@+id/splash_mars_rover_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nasa_mars_rover_photos_lbl"
         android:layout_marginTop="8dp"
+        android:text="@string/nasa_mars_rover_photos_lbl"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

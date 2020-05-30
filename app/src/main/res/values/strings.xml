@@ -13,4 +13,6 @@
     <string name="title_details_fragment">Photo\'s Detailed Info</string>
     <string name="no_data_msg">No data available</string>
     <string name="nasa_mars_rover_photos_lbl">NASA MARS ROVER PHOTOS</string>
+    <string name="rover_label_text">Rover:</string>
+    <string name="earth_date_label_text">Earth\'s Date:</string>
 </resources>

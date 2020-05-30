@@ -167,10 +167,10 @@ private fun attachNavHostFragment(fragmentManager: FragmentManager,
     navHostFragment: NavHostFragment,
     isPrimaryNavFragment: Boolean) {
     fragmentManager.beginTransaction().attach(navHostFragment).apply {
-            if (isPrimaryNavFragment) {
-                setPrimaryNavigationFragment(navHostFragment)
-            }
-        }.commitNow()
+        if (isPrimaryNavFragment) {
+            setPrimaryNavigationFragment(navHostFragment)
+        }
+    }.commitNow()
 
 }
 

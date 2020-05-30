@@ -82,14 +82,8 @@ fun ImageView.zoomImageFromThumb(zoomedImg: View,
     // Construct and run the parallel animation of the four translation and
     // scale properties (X, Y, SCALE_X, and SCALE_Y).
     currentAnimator = AnimatorSet().apply {
-        play(ObjectAnimator.ofFloat(zoomedImg,
-            View.X,
-            startBounds.left,
-            finalBounds.left)).apply {
-            with(ObjectAnimator.ofFloat(zoomedImg,
-                View.Y,
-                startBounds.top,
-                finalBounds.top))
+        play(ObjectAnimator.ofFloat(zoomedImg, View.X, startBounds.left, finalBounds.left)).apply {
+            with(ObjectAnimator.ofFloat(zoomedImg, View.Y, startBounds.top, finalBounds.top))
             with(ObjectAnimator.ofFloat(zoomedImg, View.SCALE_X, startScale, 1f))
             with(ObjectAnimator.ofFloat(zoomedImg, View.SCALE_Y, startScale, 1f))
         }

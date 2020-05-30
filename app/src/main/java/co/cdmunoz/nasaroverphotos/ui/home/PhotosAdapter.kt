@@ -18,8 +18,7 @@ class PhotosAdapter(private val photosList: ArrayList<Photo>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RowPhotoHomeBinding.inflate(inflater, parent, false)
-        return PhotosViewHolder(
-            binding)
+        return PhotosViewHolder(binding)
     }
 
     override fun getItemCount() = photosList.size
