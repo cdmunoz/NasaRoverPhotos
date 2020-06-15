@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import co.cdmunoz.nasaroverphotos.data.model.Photo
 import co.cdmunoz.nasaroverphotos.data.repository.PhotosRepository
 import co.cdmunoz.nasaroverphotos.utils.Result
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PhotosViewModel(private val photosRepository: PhotosRepository) : ViewModel() {
@@ -21,35 +20,32 @@ class PhotosViewModel(private val photosRepository: PhotosRepository) : ViewMode
     fun getCurrentPage() = currentPage
 
     fun loadData() {
-        try {
-            if (currentPage == 1) {
-                photos.postValue(Result.InProgress)
-            }
-            viewModelScope.launch(Dispatchers.IO) {
-                val response = photosRepository.getPhotosFromApi(1000, currentPage)
-                response?.let {
-                    val photosList = it.body()?.photos
-                    photosList?.let { list ->
-                        if (currentPage == 1) { //set photos for first page
-                            photos.postValue(Result.Success(list))
-                        } else { //add photos to current list
-                            val currentPhotos: ArrayList<Photo>? = photos.value?.extractData
-                            if (currentPhotos == null || currentPhotos.isEmpty()) {
+        if (currentPage == 1) {
+            photos.postValue(Result.InProgress)
+        }
+        viewModelScope.launch {
+            val response = photosRepository.getPhotosFromApi(1000, currentPage)
+            response.let {
+                when (it) {
+                    is Result.Success -> {
+                        val photosList = it.extractData
+                        photosList?.let { list ->
+                            if (currentPage == 1) { //set photos for first page
                                 photos.postValue(Result.Success(list))
-                            } else {
-                                currentPhotos.addAll(list)
-                                photos.postValue(Result.Success(currentPhotos))
+                            } else { //add photos to current list
+                                val currentPhotos: ArrayList<Photo>? = photos.value?.extractData
+                                if (currentPhotos == null || currentPhotos.isEmpty()) {
+                                    photos.postValue(Result.Success(list))
+                                } else {
+                                    currentPhotos.addAll(list)
+                                    photos.postValue(Result.Success(currentPhotos))
+                                }
                             }
                         }
-                    } ?: run {
-                        photos.postValue(Result.Success(arrayListOf()))
                     }
-                } ?: run {
-                    photos.postValue(Result.Success(arrayListOf()))
+                    else -> photos.postValue(it)
                 }
             }
-        } catch (error: Exception) {
-            photos.postValue(Result.Error(error))
         }
     }
 

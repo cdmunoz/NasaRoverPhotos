@@ -76,8 +76,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$view_model_live_data_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$view_model_live_data_version"
 
+    def timberVersion = "4.7.1"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
     //tests dependencies
-    testImplementation 'junit:junit:4.12'
+    def junitVersion = "4.13"
+    testImplementation "junit:junit:$junitVersion"
     def junitExtVersion = "1.1.1"
     androidTestImplementation "androidx.test.ext:junit:$junitExtVersion"
     androidTestImplementation "androidx.test.ext:junit-ktx:$junitExtVersion"
@@ -91,4 +95,12 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$testRulesVersion"
     def fragmentVersion = "1.2.4"
     debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
+    def mockitoCoreVersion = "3.3.3"
+    testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
+    def archCoreTest = "2.1.0"
+    testImplementation "androidx.arch.core:core-testing:$archCoreTest"
+    def coroutinesTest = "1.3.4"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTest"
+    def mockWebserverVersion = "4.7.2"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebserverVersion"
 }

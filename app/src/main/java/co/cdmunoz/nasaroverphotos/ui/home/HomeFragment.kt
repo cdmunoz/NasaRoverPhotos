@@ -98,8 +98,8 @@ class HomeFragment : Fragment() {
             } else { //when load more
                 if (binding.homePhotosList.adapter == null) { //after load more
                     setRecyclerData(photos)
-                    binding.homePhotosList.adapter?.notifyDataSetChanged()
                 }
+                binding.homePhotosList.adapter?.notifyDataSetChanged()
             }
             //load state of rv
             if (photosViewModel?.listState != null) {
