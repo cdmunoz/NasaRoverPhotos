@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.cdmunoz.nasaroverphotos.MainActivity
 import co.cdmunoz.nasaroverphotos.R
-import co.cdmunoz.nasaroverphotos.data.api.ApiService
-import co.cdmunoz.nasaroverphotos.data.api.RetrofitService
 import co.cdmunoz.nasaroverphotos.data.model.Photo
 import co.cdmunoz.nasaroverphotos.databinding.FragmentHomeBinding
 import co.cdmunoz.nasaroverphotos.databinding.FragmentHomeBindingImpl
@@ -22,6 +19,7 @@ import co.cdmunoz.nasaroverphotos.utils.list.InfiniteScrollListener
 import co.cdmunoz.nasaroverphotos.utils.test.EspressoIdlingResource
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
@@ -30,7 +28,7 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentHomeBinding
-    private var photosViewModel: PhotosViewModel? = null
+    private val photosViewModel: PhotosViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,8 +41,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBindings()
-        initViewModels()
         initObservers()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (savedInstanceState == null) {
+            EspressoIdlingResource.increment()
+            photosViewModel.loadData()
+        }
     }
 
     private fun initBindings() {
@@ -55,18 +60,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initViewModels() {
-        if (null == photosViewModel) {
-            photosViewModel = ViewModelProvider(this@HomeFragment,
-                ViewModelFactory(RetrofitService.createService(ApiService::class.java))).get(
-                PhotosViewModel::class.java)
-            EspressoIdlingResource.increment()
-            photosViewModel?.loadData()
-        }
-    }
-
     private fun initObservers() {
-        photosViewModel?.getPhotos()?.observe(viewLifecycleOwner, Observer { result ->
+        photosViewModel.getPhotos().observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Result.Success -> {
                     renderList(result.data)
@@ -87,13 +82,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchMoreData() {
-        photosViewModel?.loadDataNextPage()
+        photosViewModel.loadDataNextPage()
     }
 
     private fun renderList(photos: ArrayList<Photo>) {
         if (photos.isNotEmpty()) {
             //when screen starts
-            if (photosViewModel?.getCurrentPage() == 1 || binding.homePhotosList.adapter?.itemCount == 0) {
+            if (photosViewModel.getCurrentPage() == 1 || binding.homePhotosList.adapter?.itemCount == 0) {
                 setRecyclerData(photos)
             } else { //when load more
                 if (binding.homePhotosList.adapter == null) { //after load more
@@ -102,9 +97,9 @@ class HomeFragment : Fragment() {
                 binding.homePhotosList.adapter?.notifyDataSetChanged()
             }
             //load state of rv
-            if (photosViewModel?.listState != null) {
-                binding.homePhotosList.layoutManager?.onRestoreInstanceState(photosViewModel?.listState)
-                photosViewModel?.listState = null
+            if (photosViewModel.listState != null) {
+                binding.homePhotosList.layoutManager?.onRestoreInstanceState(photosViewModel.listState)
+                photosViewModel.listState = null
             }
         } else {
             showSnackBarMessage()
@@ -132,7 +127,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        photosViewModel?.listState = binding.homePhotosList.layoutManager?.onSaveInstanceState()
+        photosViewModel.listState = binding.homePhotosList.layoutManager?.onSaveInstanceState()
         super.onDestroyView()
     }
 }

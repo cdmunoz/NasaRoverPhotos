@@ -50,9 +50,9 @@ class PhotoDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Retrieve and cache the system's default "short" animation time.
         shortAnimationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
-        binding.photoDetailsImageZoom.setImageFromUrl(photo.imgSrc)
+        binding.photoDetailsImageZoom.setImageFromUrl(photo.getSecureImgSrc())
         with(binding.photoDetailsImage) {
-            setImageFromUrlWithProgressBar(photo.imgSrc, binding.photoDetailsProgress)
+            setImageFromUrlWithProgressBar(photo.getSecureImgSrc(), binding.photoDetailsProgress)
             setOnClickListener {
                 zoomImageFromThumb(binding.photoDetailsImageZoom,
                     binding.photoDetailsContainer,

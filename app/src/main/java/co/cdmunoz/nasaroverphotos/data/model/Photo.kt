@@ -11,4 +11,7 @@ data class Photo(@SerializedName("camera") val camera: Camera,
     @SerializedName("id") val id: String,
     @SerializedName("img_src") val imgSrc: String,
     @SerializedName("rover") val rover: Rover,
-    @SerializedName("sol") val sol: String) : Parcelable
+    @SerializedName("sol") val sol: String) : Parcelable {
+
+    fun getSecureImgSrc() = imgSrc.replace("http:", "https:")
+}

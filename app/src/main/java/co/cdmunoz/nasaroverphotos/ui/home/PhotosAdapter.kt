@@ -34,7 +34,7 @@ class PhotosAdapter(private val photosList: ArrayList<Photo>) :
         fun bind(photo: Photo) {
             binding.photoBinding = photo
             binding.executePendingBindings()
-            binding.rowPhotoRoverImg.setImageFromUrlWithProgressBar(photo.imgSrc,
+            binding.rowPhotoRoverImg.setImageFromUrlWithProgressBar(photo.getSecureImgSrc(),
                 binding.rowPhotoRoverProgress)
             binding.root.setOnClickListener { view ->
                 val bundle = bundleOf(PhotoDetailsFragment.PHOTO_ARG to photo)

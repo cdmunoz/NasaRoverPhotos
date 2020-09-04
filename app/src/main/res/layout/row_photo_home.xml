@@ -54,7 +54,7 @@
                 android:id="@+id/row_photo_rover_img"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:image_url="@{photoBinding.imgSrc}"
+                android:image_url="@{photoBinding.secureImgSrc}"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

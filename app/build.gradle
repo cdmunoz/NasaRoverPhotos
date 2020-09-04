@@ -79,6 +79,10 @@ dependencies {
     def timberVersion = "4.7.1"
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
+    def koin_version = "2.1.5"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
     //tests dependencies
     def junitVersion = "4.13"
     testImplementation "junit:junit:$junitVersion"
@@ -103,4 +107,6 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTest"
     def mockWebserverVersion = "4.7.2"
     testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebserverVersion"
+    // Koin testing tools
+    testImplementation "org.koin:koin-test:$koin_version"
 }
